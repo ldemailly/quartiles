@@ -110,4 +110,5 @@ flags:
 
 https://www.apple.com/newsroom/2024/05/apple-news-plus-introduces-quartiles-a-new-game-and-offline-mode-for-subscribers/
 
-![screenshot](https://www.apple.com/newsroom/images/2024/05/apple-news-plus-introduces-quartiles-a-new-game-and-offline-mode-for-subscribers/article/Apple-News-Plus-Quartiles-initial-state_inline.jpg.large_2x.jpg)
+
+<img src="https://github.com/ldemailly/quartiles/assets/3664595/4ef37a1b-86e8-4841-88fa-c36bc5e5838b" width="50%">
