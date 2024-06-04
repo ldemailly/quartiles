@@ -100,3 +100,12 @@ https://www.apple.com/newsroom/2024/05/apple-news-plus-introduces-quartiles-a-ne
 
 
 <img src="https://github.com/ldemailly/quartiles/assets/3664595/4ef37a1b-86e8-4841-88fa-c36bc5e5838b" width="50%">
+
+## Wordlist
+
+The `words` used in Dockerfile is from Ubuntu's
+`apt install wamerican-large` american-english-large words-large
+removing 's and all caps acronyms
+```
+grep -v "'" /usr/share/dict/american-english-large | grep -v -E "^[A-Z]+s?$" > words
+```

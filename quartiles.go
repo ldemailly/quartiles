@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	_ "embed"
 	"flag"
 	"fmt"
 	"os"
@@ -12,9 +13,16 @@ import (
 	"fortio.org/sets"
 )
 
+//go:embed words
+var dictWords string
+
 // Get words set.
 func getWords(dictionaryPath string) sets.Set[string] {
-	// Open the dictionary file
+	// Open the dictionary file if provided
+	if dictionaryPath == "" {
+		// Use the embedded dictionary
+		return sets.FromSlice(strings.Fields(dictWords))
+	}
 	file, err := os.Open(dictionaryPath)
 	if err != nil {
 		log.Fatalf("Error opening dictionary file: %v", err)
@@ -41,7 +49,7 @@ func getWords(dictionaryPath string) sets.Set[string] {
 }
 
 func main() {
-	dict := flag.String("dictionary", "/usr/share/dict/words", "Dictionary file `path` to use")
+	dict := flag.String("dict", "", "Dictionary file `path` to use, instead of default embedded one")
 	cli.MinArgs = 1
 	cli.MaxArgs = -1
 	cli.ArgsHelp = "word fragments...\n" +
