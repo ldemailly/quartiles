@@ -1,12 +1,30 @@
 # quartiles
 Find quartiles (apple news+ new game)
 
+You can make a screenshot and use iphone text extraction to copy paste the list of fragments (or type it)
+
+## Installation
+
+From source
+```
+go install github.com/ldemailly/quartiles@latest
+```
+
+Or see the numerous binaries in https://github.com/ldemailly/quartiles/releases
+
+Or docker `fortio/quartiles:latest`
+
+Or brew `brew install fortio/tap/quartiles`
+
+(I manage the fortio org and usually put everything there but this one is completely unrelated outside of it's usage of https://pkg.go.dev/fortio.org/sets#Tuplets so for now it is hosted here in `ldemailly` yet uses fortio's org for docker and brew)
+
+## Example
 
 Make a screenshot, select the word fragments, paste to textedit, convert to plain text, paste to `quartiles`
 
 Example:
 ```
-$ go run . -loglevel debug "nder
+$ quartiles "nder
 nt
 sti
 bi
