@@ -43,18 +43,23 @@ func getWords(dictionaryPath string) sets.Set[string] {
 func main() {
 	dict := flag.String("dictionary", "/usr/share/dict/words", "Dictionary file to use")
 	cli.MinArgs = 1
+	cli.MaxArgs = -1
+	cli.ArgsHelp = "word fragments...\n" +
+		"Finds all words in dictionary that can be made from the given fragments"
 	cli.Main()
 	words := getWords(*dict)
 	log.Infof("Words in dictionary %s: %d", *dict, words.Len())
-	fragments := strings.ToLower(flag.Args()[0])
+	// Either 1 argument with spaces between fragments or multiple arguments
+	fragments := strings.ToLower(strings.Join(flag.Args(), " "))
 	// Split the input into words
 	wordsInFragments := strings.Fields(fragments)
 	fSet := sets.FromSlice(wordsInFragments)
 	// Format like quartiles original screenshot:
 	log.Infof("Looking at fragments:")
+	lastIdx := len(wordsInFragments) - 1
 	for i, word := range wordsInFragments {
 		fmt.Printf("%s\t", word)
-		if i%4 == 3 {
+		if i%4 == 3 || i == lastIdx {
 			fmt.Println()
 		}
 	}
