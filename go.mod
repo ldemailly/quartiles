@@ -1,6 +1,6 @@
 module github.com/ldemailly/quartiles
 
-go 1.22.3
+go 1.22.4
 
 require (
 	fortio.org/cli v1.5.2
