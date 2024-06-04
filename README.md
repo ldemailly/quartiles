@@ -57,11 +57,17 @@ ies	vo	mon	ba
 tue	rd	fri	lit
 sw	ck	wed	gam
 19:22:47.346 [INF] Checking 2 words combinations:
+alba
 back
 bacon
+bander
+bant
 bard
 binder
 bird
+conies
+gamba
+gammon
 lock
 lord
 lowed
@@ -72,9 +78,14 @@ thunder
 vowed
 19:22:47.346 [INF] Checking 3 words combinations:
 allowed
+backlit
+bialies
+binderies
+birdies
 stickies
 wedlock
 19:22:47.351 [INF] Checking 4 words combinations:
+allogamies
 backgammon
 constituent
 frivolities
@@ -90,8 +101,8 @@ Finds all words in dictionary that can be made from the given fragments
 or 1 of the special arguments
 	quartiles {help|envhelp|version|buildinfo}
 flags:
-  -dictionary path
-    	Dictionary file path to use (default "/usr/share/dict/words")
+  -dict path
+    	Dictionary file path to use, instead of default embedded one
 ```
 
 ## What is the Quartiles game?
@@ -100,3 +111,12 @@ https://www.apple.com/newsroom/2024/05/apple-news-plus-introduces-quartiles-a-ne
 
 
 <img src="https://github.com/ldemailly/quartiles/assets/3664595/4ef37a1b-86e8-4841-88fa-c36bc5e5838b" width="50%">
+
+## Wordlist
+
+The `words` used in Dockerfile is from Ubuntu's
+`apt install wamerican-large` american-english-large words-large
+removing 's and all caps acronyms
+```
+grep -v "'" /usr/share/dict/american-english-large | grep -v -E "^[A-Z]+s?$" > words
+```
