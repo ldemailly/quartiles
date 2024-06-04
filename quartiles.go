@@ -28,10 +28,6 @@ func getWords(dictionaryPath string) sets.Set[string] {
 	// Read the file word by word
 	for scanner.Scan() {
 		word := scanner.Text()
-		// skip words lower than 5 characters
-		if len(word) < 5 {
-			continue
-		}
 		// normalize the word to lowercase
 		word = strings.ToLower(word)
 		// add to set
@@ -49,5 +45,27 @@ func main() {
 	cli.MinArgs = 1
 	cli.Main()
 	words := getWords(*dict)
-	fmt.Printf("Words in dictionary: %d\n", words.Len())
+	log.Infof("Words in dictionary %s: %d", *dict, words.Len())
+	fragments := strings.ToLower(flag.Args()[0])
+	// Split the input into words
+	wordsInFragments := strings.Fields(fragments)
+	fSet := sets.FromSlice(wordsInFragments)
+	// Format like quartiles original screenshot:
+	log.Infof("Looking at fragments:")
+	for i, word := range wordsInFragments {
+		fmt.Printf("%s\t", word)
+		if i%4 == 3 {
+			fmt.Println()
+		}
+	}
+	// Check all combinations of 2-4 words
+	for i := 2; i <= 4; i++ {
+		log.Infof("Checking %d words combinations:", i)
+		for _, c := range sets.Tuplets(fSet, i) {
+			w := strings.Join(c, "")
+			if words.Has(w) {
+				fmt.Println(w)
+			}
+		}
+	}
 }
