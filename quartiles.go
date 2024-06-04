@@ -50,6 +50,7 @@ func getWords(dictionaryPath string) sets.Set[string] {
 
 func main() {
 	dict := flag.String("dict", "", "Dictionary file `path` to use, instead of default embedded one")
+	foursOnly := flag.Bool("4", false, "Only find the 4-part words")
 	cli.MinArgs = 1
 	cli.MaxArgs = -1
 	cli.ArgsHelp = "word fragments...\n" +
@@ -71,13 +72,17 @@ func main() {
 			fmt.Println()
 		}
 	}
-	// Check all combinations of 2-4 words
-	for i := 2; i <= 4; i++ {
-		log.Infof("Checking %d words combinations:", i)
+	// Check all combinations of 2-4 words (or 4 only if -4 flag)
+	start := 2
+	if *foursOnly {
+		start = 4
+	}
+	for i := start; i <= 4; i++ {
+		log.Infof("Checking %d parts combinations:", i)
 		for _, c := range sets.Tuplets(fSet, i) {
 			w := strings.Join(c, "")
 			if words.Has(w) {
-				fmt.Println(w)
+				fmt.Println(strings.Join(c, "-"), ":", w)
 			}
 		}
 	}
