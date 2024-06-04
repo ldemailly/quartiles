@@ -1,5 +1,6 @@
-# quartiles
-Find quartiles (apple news+ new game)
+# Quartiles
+
+Find quartiles ([apple news+ new game](https://www.apple.com/newsroom/2024/05/apple-news-plus-introduces-quartiles-a-new-game-and-offline-mode-for-subscribers/))
 
 You can make a screenshot and use iphone text extraction to copy paste the list of fragments (or type it)
 
@@ -104,3 +105,9 @@ flags:
   -dictionary path
     	Dictionary file path to use (default "/usr/share/dict/words")
 ```
+
+## What is the Quartiles game?
+
+https://www.apple.com/newsroom/2024/05/apple-news-plus-introduces-quartiles-a-new-game-and-offline-mode-for-subscribers/
+
+![screenshot](https://www.apple.com/newsroom/images/2024/05/apple-news-plus-introduces-quartiles-a-new-game-and-offline-mode-for-subscribers/article/Apple-News-Plus-Quartiles-initial-state_inline.jpg.large_2x.jpg)
