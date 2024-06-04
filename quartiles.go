@@ -41,7 +41,7 @@ func getWords(dictionaryPath string) sets.Set[string] {
 }
 
 func main() {
-	dict := flag.String("dictionary", "/usr/share/dict/words", "Dictionary file to use")
+	dict := flag.String("dictionary", "/usr/share/dict/words", "Dictionary file `path` to use")
 	cli.MinArgs = 1
 	cli.MaxArgs = -1
 	cli.ArgsHelp = "word fragments...\n" +

@@ -91,3 +91,16 @@ constituent
 thunderbird
 thunderstick
 ```
+
+## Usage
+
+```
+quartiles 0.1.0 usage:
+	quartiles [flags] word fragments...
+Finds all words in dictionary that can be made from the given fragments
+or 1 of the special arguments
+	quartiles {help|envhelp|version|buildinfo}
+flags:
+  -dictionary path
+    	Dictionary file path to use (default "/usr/share/dict/words")
+```
