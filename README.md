@@ -113,7 +113,7 @@ https://www.apple.com/newsroom/2024/05/apple-news-plus-introduces-quartiles-a-ne
 
 The `words` used in Dockerfile is from Ubuntu's
 `apt install wamerican-large` american-english-large words-large
-removing 's and all caps acronyms
+removing 's and all caps acronyms and non ascii words
 ```
-grep -v "'" /usr/share/dict/american-english-large | grep -v -E "^[A-Z]+s?$" > words
+gnugrep -v -E -e "^[A-Z]+s?$" -e '[^a-zA-Z]' < /usr/share/dict/american-english-large > words
 ```
