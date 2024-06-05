@@ -48,9 +48,14 @@ func getWords(dictionaryPath string) sets.Set[string] {
 	return words
 }
 
+func hintReplace(word string, idx int) string {
+	return word[0:idx] + strings.Repeat("_", len(word)-idx)
+}
+
 func main() {
 	dict := flag.String("dict", "", "Dictionary file `path` to use, instead of default embedded one")
 	foursOnly := flag.Bool("4", false, "Only find the 4-part words")
+	startsOnly := flag.Bool("hints", false, "Only show the first segment of the answers (hints only mode)")
 	cli.MinArgs = 1
 	cli.MaxArgs = -1
 	cli.ArgsHelp = "word fragments...\n" +
@@ -82,7 +87,11 @@ func main() {
 		for _, c := range sets.Tuplets(fSet, i) {
 			w := strings.Join(c, "")
 			if words.Has(w) {
-				fmt.Println(strings.Join(c, "-"), ":", w)
+				if *startsOnly {
+					fmt.Printf("%s%s\t: %s\n", c[0], strings.Repeat("-*", len(c)-1), hintReplace(w, len(c[0])))
+				} else {
+					fmt.Printf("%s\t: %s\n", strings.Join(c, "-"), w)
+				}
 			}
 		}
 	}

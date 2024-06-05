@@ -23,6 +23,8 @@ Or brew `brew install fortio/tap/quartiles`
 
 Make a screenshot, select the word fragments, paste to textedit, convert to plain text, paste to `quartiles`
 
+Use `-hints` to only get the start of the answers.
+
 Example:
 ```
 $ docker run -ti fortio/quartiles:latest "nder
@@ -88,6 +90,50 @@ mac-ar-oo-ns : macaroons
 pa-tri-arch-al : patriarchal
 pre-dic-tab-le : predictable
 ```
+
+or when using `-hints` only:
+
+```
+20:48:09.648 [INF] Words in dictionary : 132446
+20:48:09.648 [INF] Looking at fragments:
+lb	mac	ash	pa
+tri	ns	ar	arch
+ect	fl	el	oo
+bu	ora	al	tes
+pre	dic	tab	le
+20:48:09.648 [INF] Checking 2 parts combinations:
+al-*	: al__
+bu-*	: bu__
+bu-*	: bu__
+el-*	: el___
+fl-*	: fl___
+fl-*	: fl___
+le-*	: le__
+le-*	: le___
+le-*	: le__
+mac-*	: mac__
+ora-*	: ora___
+pa-*	: pa__
+pa-*	: pa__
+pa-*	: pa___
+tab-*	: tab__
+tab-*	: tab__
+tri-*	: tri__
+20:48:09.648 [INF] Checking 3 parts combinations:
+bu-*-*	: bu____
+le-*-*	: le____
+pa-*-*	: pa_______
+pre-*-*	: pre_____
+tes-*-*	: tes_____
+tri-*-*	: tri_____
+20:48:09.651 [INF] Checking 4 parts combinations:
+el-*-*-*	: el_________
+fl-*-*-*	: fl_______
+mac-*-*-*	: mac______
+pa-*-*-*	: pa_________
+pre-*-*-*	: pre________
+```
+
 ## Usage
 
 ```
@@ -100,6 +146,8 @@ flags:
   -4	Only find the 4-part words
   -dict path
     	Dictionary file path to use, instead of default embedded one
+  -hints
+    	Only show the first segment of the answers (hints only mode)
 ```
 
 ## What is the Quartiles game?
