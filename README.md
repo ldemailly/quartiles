@@ -1,6 +1,6 @@
 # Quartiles
 
-Find quartiles ([apple news+ new game](https://www.apple.com/newsroom/2024/05/apple-news-plus-introduces-quartiles-a-new-game-and-offline-mode-for-subscribers/))
+Cli tool to solve and find quartiles ([apple news+ new game](https://www.apple.com/newsroom/2024/05/apple-news-plus-introduces-quartiles-a-new-game-and-offline-mode-for-subscribers/))
 
 You can make a screenshot and use iphone text extraction to copy paste the list of fragments (or type it)
 
