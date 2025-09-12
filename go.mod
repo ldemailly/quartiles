@@ -3,7 +3,7 @@ module github.com/ldemailly/quartiles
 go 1.22.4
 
 require (
-	fortio.org/cli v1.10.0
+	fortio.org/cli v1.11.0
 	fortio.org/log v1.17.2
 	fortio.org/sets v1.3.0
 )
